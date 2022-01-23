@@ -49,4 +49,4 @@ else:
                     print("4 instances of " + character + " found in " + word)
                 else:
                     if instance == 5:
-                        print("1 instance of " + character + " found in " + word)
+                        print("5 instances of " + character + " found in " + word)
