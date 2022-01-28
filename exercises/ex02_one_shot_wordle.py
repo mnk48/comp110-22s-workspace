@@ -15,7 +15,7 @@ YELLOW_BOX: str = "\U0001F7E8"
 
 while i == 0:
     if len(guess) != length:
-        guess: str = input(f"That was not {length} letters! Try again: ")
+        guess = input(f"That was not {length} letters! Try again: ")
     else:
         while index < length:
             if guess[index] == secret_word[index]:  # If the characters at the indexes match, a green box will be added to the string.
