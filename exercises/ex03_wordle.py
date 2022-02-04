@@ -48,10 +48,10 @@ def input_guess(expected_length: int) -> str:
     guess: str = input(f"Enter a {expected_length} character word: ")
     idx: int = 0
     while idx == 0:
-        if len(guess) == expected_length:  # If the length of the guess is the same as the length of the secret word, return the guess.
+        if len(guess) != expected_length:  # If the length of the guess is not equal to the length of the secret, prompt the user for another word.
+            guess = input(f"That wasn't {expected_length} chars! Try again: ")  
+        else:  # If the length of the guess is equal to the length of the secret, close the loop and return the guess.
             idx += 1
-        else:
-            guess = input(f"That was not {expected_length} letters! Try again: ")  # If not, promopt the user for another word.
     return guess 
 
 
@@ -62,7 +62,7 @@ def main() -> None:
     win: bool = False
     while turn <= 6 and win is False:
         print(f"=== Turn {turn}/6 ===")
-        official_guess: str = input_guess(len(secret_word))  # The official guess is a result of the input_guess function testing if it is the correct length.
+        official_guess: str = input_guess(len(secret_word))  # The official guess is a result of input_guess testing if it is the correct length.
         print(emojified(official_guess, secret_word))  # The emojified function determines what characters in the official guess are in the secret word, and at what indices.
         if emojified(official_guess, secret_word) == len(secret_word) * GREEN_BOX:  # If emojified produces as many green boxes as the length of the word, the user wins.
             win = True
