@@ -49,9 +49,10 @@ def input_guess(expected_length: int) -> str:
     idx: int = 0
     while idx == 0:
         if len(guess) == expected_length:  # If the length of the guess is the same as the length of the secret word, return the guess.
-            return guess
+            idx += 1
         else:
             guess = input(f"That was not {expected_length} letters! Try again: ")  # If not, promopt the user for another word.
+    return guess 
 
 
 def main() -> None:
