@@ -13,7 +13,7 @@ def contains_char(word: str, character: str) -> bool:
     i: int = 0
     character_in_word: bool = False
     while i < len(word):
-        if character == word[i]:  # If the character is in both words at the same index...
+        if character == word[i]:  # If the character is in the word at the first index...
             character_in_word = True  # Then the character is in the word.
             i += 1
         else:  # If not, move on to the next index. 
