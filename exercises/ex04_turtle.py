@@ -1,4 +1,4 @@
-"""Describe scene program."""
+"""Every time you come home, the landlord has completely renovated."""
 
 __author__ = "730389267"
 
@@ -14,6 +14,7 @@ def main() -> None:
     tracer(0, 0)
     night_sky(t)
     random_stars(t)
+    moon(t, 50)
     grass(t)
     house(t)
     update()
@@ -41,7 +42,7 @@ def draw_star(artist: Turtle, x: int, y: int) -> None:
 def random_stars(artist: Turtle) -> None:
     """Randomizes stars in the night sky."""
     i: int = 0
-    while i < 10:
+    while i < 20:
         draw_star(t, randint(-600, 600), randint(-200, 500))
         i += 1
 
@@ -68,8 +69,8 @@ def night_sky(artist: Turtle) -> None:
     artist.end_fill()
 
 
-def rectangle(artist: Turtle, x: int, y: int, height: int, width: int):
-    """Draws a rectangle with inputed width and height."""
+def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
+    """Draws a rectangle with left bottom corner at (x, y) and inputed width and height."""
     artist.penup()
     artist.goto(x, y)
     artist.setheading(0.0)
@@ -83,7 +84,7 @@ def rectangle(artist: Turtle, x: int, y: int, height: int, width: int):
     artist.forward(height)
 
 
-def grass(artist: Turtle):
+def grass(artist: Turtle) -> None:
     """Mows the lawn."""
     artist.hideturtle()
     artist.pencolor(12, 82, 3)
@@ -93,8 +94,8 @@ def grass(artist: Turtle):
     artist.end_fill()
 
 
-def triangle(artist: Turtle, x: int, y: int, side_length: int):
-    """Draws a triangle with inputed side length."""
+def triangle(artist: Turtle, x: int, y: int, side_length: int) -> None:
+    """Draws a triangle with left corner at (x, y) and with inputed side length."""
     artist.hideturtle()
     artist.penup()
     artist.goto(x, y)
@@ -107,18 +108,46 @@ def triangle(artist: Turtle, x: int, y: int, side_length: int):
         i = i + 1
 
 
-def house(artist: Turtle):
+def house(artist: Turtle) -> None:
     """Builds a different house each time."""
     artist.hideturtle()
     artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))
     artist.fillcolor(randint(0, 255), randint(0, 255), randint(0, 255))
     position: int = randint(-500, 300)
-    height: int = randint(250, 400)
-    artist.begin_fill()
-    rectangle(artist, position, -150, height, 250)
-    triangle(artist, position, -150 + height, 250)
+    artist.begin_fill()  # Makes the main house.
+    rectangle(artist, position, -150, 280, 250)
+    # triangle(artist, position, -150 + height, 250)
     artist.end_fill()
+    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.fillcolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.begin_fill()  # Makes the door.
+    rectangle(artist, position + 100, -150, 100, 50)
+    artist.end_fill()
+    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.fillcolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.begin_fill()  # Makes the top window. 
+    rectangle(artist, position + 25, 0, 80, 200)
+    artist.end_fill()
+    i: int = 0
+    while i < 2:  # Makes the two windows.
+        artist.begin_fill()
+        square(artist, position + 30, -120, 50)
+        artist.end_fill()
+        position += 140
+        i += 1
 
+
+def moon(artist: Turtle, radius: float) -> None:
+    artist.penup()
+    artist.goto(randint(-200, 500), randint(0, 200))
+    artist.setheading(0.0)
+    artist.pendown()
+    artist.pencolor("yellow")
+    artist.fillcolor("yellow")
+    artist.begin_fill()
+    artist.circle(radius)
+    artist.end_fill()
+   
 
 if __name__ == "__main__":
     main()
