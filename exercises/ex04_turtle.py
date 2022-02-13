@@ -81,39 +81,38 @@ def season() -> str:
 
 def sky(artist: Turtle) -> None:
     """Creates a peaceful sky."""
-    if time() == "day":
-        if season() == "winter":
-            artist.pencolor(5, 4, 40)
-            artist.fillcolor(5, 4, 40)
-            artist.begin_fill()
-            square(t, -700, -700, 1400)
-            artist.end_fill()
-        if season() == "spring":
-            artist.pencolor(5, 4, 40)
-            artist.fillcolor(5, 4, 40)
-            artist.begin_fill()
-            square(t, -700, -700, 1400)
-            artist.end_fill()
-        if season() == "summer":
-            artist.pencolor(5, 4, 40)
-            artist.fillcolor(5, 4, 40)
-            artist.begin_fill()
-            square(t, -700, -700, 1400)
-            artist.end_fill()
-        if season() == "fall":
-            artist.pencolor(5, 4, 40)
-            artist.fillcolor(5, 4, 40)
-            artist.begin_fill()
-            square(t, -700, -700, 1400)
-            artist.end_fill() 
-    else:
+    artist.pencolor(5, 4, 40)
+    artist.fillcolor(5, 4, 40)
+    artist.begin_fill()
+    square(t, -700, -700, 1400)
+    artist.end_fill()
+    # if time() == "day":
+    #     if season() == "winter":
+    #         artist.pencolor(5, 4, 40)
+    #         artist.fillcolor(5, 4, 40)
+    #         artist.begin_fill()
+    #         square(t, -700, -700, 1400)
+    #         artist.end_fill()
+    #     if season() == "spring":
+    #         artist.pencolor(5, 4, 40)
+    #         artist.fillcolor(5, 4, 40)
+    #         artist.begin_fill()
+    #         square(t, -700, -700, 1400)
+    #         artist.end_fill()
+    #     if season() == "summer":
+    #         artist.pencolor(5, 4, 40)
+    #         artist.fillcolor(5, 4, 40)
+    #         artist.begin_fill()
+    #         square(t, -700, -700, 1400)
+    #         artist.end_fill()
+    #     if season() == "fall":
+    #         artist.pencolor(5, 4, 40)
+    #         artist.fillcolor(5, 4, 40)
+    #         artist.begin_fill()
+    #         square(t, -700, -700, 1400)
+    #         artist.end_fill() 
+    # else:
            
-    # artist.pencolor(5, 4, 40)
-    # artist.fillcolor(5, 4, 40)
-    # artist.begin_fill()
-    # square(t, -700, -700, 1400)
-    # artist.end_fill()
-
 
 def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
     """Draws a rectangle with left bottom corner at (x, y) and inputed width and height."""
