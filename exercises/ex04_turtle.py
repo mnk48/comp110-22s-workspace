@@ -59,14 +59,42 @@ def square(artist: Turtle, x: int, y: int, width: int) -> None:
         artist.left(90)
         i += 1
 
+def time() -> str:
+    x: int = randint(1, 2)
+    if x == 1:
+        return "day"
+    else:
+        return "night"
 
-def night_sky(artist: Turtle) -> None:
-    """Creates a peaceful night sky."""
-    artist.pencolor(5, 4, 40)
-    artist.fillcolor(5, 4, 40)
-    artist.begin_fill()
-    square(t, -700, -700, 1400)
-    artist.end_fill()
+
+def season() -> str:
+    x: int = randint(1, 4)
+    if x == 1:
+        return "winter"
+    if x == 2:
+        return "spring"
+    if x == 3:
+        return "summer"
+    if x == 4:
+        return "fall"
+
+
+def sky(artist: Turtle) -> None:
+    """Creates a peaceful sky."""
+    if time() == "day":
+        if season() == "winter":
+            artist.pencolor(5, 4, 40)
+            artist.fillcolor(5, 4, 40)
+            artist.begin_fill()
+            square(t, -700, -700, 1400)
+            artist.end_fill()
+        if season() == "spring":
+            
+    # artist.pencolor(5, 4, 40)
+    # artist.fillcolor(5, 4, 40)
+    # artist.begin_fill()
+    # square(t, -700, -700, 1400)
+    # artist.end_fill()
 
 
 def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
