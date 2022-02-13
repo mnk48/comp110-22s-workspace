@@ -12,7 +12,7 @@ t: Turtle = Turtle()
 def main() -> None:
     """The entrypoint of my scene."""
     tracer(0, 0)
-    night_sky(t)
+    sky(t)
     random_stars(t)
     moon(t, 50)
     grass(t)
@@ -89,7 +89,25 @@ def sky(artist: Turtle) -> None:
             square(t, -700, -700, 1400)
             artist.end_fill()
         if season() == "spring":
-            
+            artist.pencolor(5, 4, 40)
+            artist.fillcolor(5, 4, 40)
+            artist.begin_fill()
+            square(t, -700, -700, 1400)
+            artist.end_fill()
+        if season() == "summer":
+            artist.pencolor(5, 4, 40)
+            artist.fillcolor(5, 4, 40)
+            artist.begin_fill()
+            square(t, -700, -700, 1400)
+            artist.end_fill()
+        if season() == "fall":
+            artist.pencolor(5, 4, 40)
+            artist.fillcolor(5, 4, 40)
+            artist.begin_fill()
+            square(t, -700, -700, 1400)
+            artist.end_fill() 
+    else:
+           
     # artist.pencolor(5, 4, 40)
     # artist.fillcolor(5, 4, 40)
     # artist.begin_fill()
