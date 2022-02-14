@@ -21,6 +21,7 @@ def main() -> None:
 
 
 def moon(artist: Turtle, radius: float) -> None:
+    """Generates a full moon at a different position."""
     artist.penup()
     artist.goto(randint(-200, 500), randint(0, 200))
     artist.setheading(0.0)
@@ -33,6 +34,7 @@ def moon(artist: Turtle, radius: float) -> None:
 
 
 def sun(artist: Turtle, radius: float) -> None:
+    """Generates a beaming sun of different colors at a different position."""
     artist.penup()
     artist.goto(randint(-200, 500), randint(0, 200))
     artist.setheading(0.0)
@@ -72,7 +74,7 @@ def night_sky(artist: Turtle) -> None:
 
 
 def leaves(artist: Turtle) -> None:
-    if season() == "fall" and time() == "day":
+    if time() == "day":
         random_color: int = randint(1, 3)
         leaf_color: str = ""
         if random_color == 1:
@@ -99,33 +101,30 @@ def leaves(artist: Turtle) -> None:
 
 def time() -> str:
     x: int = randint(1, 2)
+    random_time: str = ""
     if x == 1:
-        return "day"
-    else:
-        return "night"
-
-
-def season() -> str:
-    x: int = randint(1, 4)
-    season_type: str = ""
-    if x == 1:
-        season_type += "winter"
+        random_time += "day"
     if x == 2:
-        season_type += "spring"
-    if x == 3:
-        season_type += "summer"
-    if x == 4:
-        season_type += "fall"
-    return season_type
+        random_time += "night"
+    return random_time
+
+
+# def season() -> str:
+#     x: int = randint(1, 4)
+#     season_type: str = ""
+#     if x == 1:
+#         season_type += "winter"
+#     if x == 2:
+#         season_type += "spring"
+#     if x == 3:
+#         season_type += "summer"
+#     if x == 4:
+#         season_type += "fall"
+#     return season_type
 
 
 def sky(artist: Turtle) -> None:
     """Creates a peaceful sky."""
-    # artist.pencolor(5, 4, 40)
-    # artist.fillcolor(5, 4, 40)
-    # artist.begin_fill()
-    # square(t, -700, -700, 1400)
-    # artist.end_fill()
     if time() == "day":
         artist.pencolor(39, 208, 219)
         artist.fillcolor(39, 208, 219)
