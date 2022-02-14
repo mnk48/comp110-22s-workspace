@@ -13,8 +13,8 @@ def main() -> None:
     """The entrypoint of my scene."""
     tracer(0, 0)
     sky(t)
-    leaves(t)
     grass(t)
+    birds(t, 300, 300)
     house(t)
     update()
     done()
@@ -74,29 +74,43 @@ def night_sky(artist: Turtle) -> None:
 
 
 def leaves(artist: Turtle) -> None:
-    if time() == "day":
-        random_color: int = randint(1, 3)
-        leaf_color: str = ""
-        if random_color == 1:
-            leaf_color += "red"
-        if random_color == 2:
-            leaf_color += "green"
-        if random_color == 3:
-            leaf_color += "yellow"
-        i: int = 0
-        while i < 25:
-            artist.penup()
-            artist.goto(randint(-600, 600), randint(-400, 500))
-            artist.setheading(0.0)
-            artist.pendown()
-            artist.pencolor(leaf_color)
-            artist.fillcolor(leaf_color)
-            artist.begin_fill()
-            artist.circle(15, 70)
-            artist.left(110)
-            artist.circle(15, 70)
-            artist.end_fill()
-            i += 1
+    random_color: int = randint(1, 3)
+    leaf_color: str = ""
+    if random_color == 1:
+        leaf_color += "red"
+    if random_color == 2:
+        leaf_color += "green"
+    if random_color == 3:
+        leaf_color += "yellow"
+    i: int = 0
+    while i < 25:
+        artist.penup()
+        artist.goto(randint(-600, 600), randint(-400, 500))
+        artist.setheading(0.0)
+        artist.pendown()
+        artist.pencolor(leaf_color)
+        artist.fillcolor(leaf_color)
+        artist.begin_fill()
+        artist.circle(15, 70)
+        artist.left(110)
+        artist.circle(15, 70)
+        artist.end_fill()
+        i += 1
+
+
+def birds(artist: Turtle, x: int, y: int) -> None:
+    i: int = 0
+    while i < 6:
+        artist.penup()
+        artist.goto(x, y)
+        artist.setheading(0.0)
+        artist.pendown()
+        artist.pencolor("black")
+        artist.fillcolor("black")
+        artist.circle(-15, 70)
+        artist.circle(-15, 70)
+        i += 1
+
 
 
 def time() -> str:
@@ -132,6 +146,7 @@ def sky(artist: Turtle) -> None:
         square(t, -700, -700, 1400)
         artist.end_fill() 
         sun(artist, 50)
+        leaves(artist)
     else:
         artist.pencolor(5, 4, 40)
         artist.fillcolor(5, 4, 40)
