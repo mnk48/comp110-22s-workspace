@@ -72,7 +72,7 @@ def night_sky(artist: Turtle) -> None:
 
 
 def leaves(artist: Turtle) -> None:
-    if season() == "fall":
+    if season() == "fall" and time() == "day":
         random_color: int = randint(1, 3)
         leaf_color: str = ""
         if random_color == 1:
