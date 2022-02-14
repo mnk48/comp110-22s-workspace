@@ -13,6 +13,7 @@ def main() -> None:
     """The entrypoint of my scene."""
     tracer(0, 0)
     sky(t)
+    leaves(t)
     grass(t)
     house(t)
     update()
@@ -71,27 +72,29 @@ def night_sky(artist: Turtle) -> None:
 
 
 def leaves(artist: Turtle) -> None:
-    random_color: int = randint(1, 3)
-    leaf_color: str = ""
-    if random_color == 1:
-        leaf_color += "red"
-    if random_color == 2:
-        leaf_color += "green"
-    if random_color == 3:
-        leaf_color += "yellow"
-    i: int = 0
-    while i < 20:
-        artist.penup()
-        artist.goto(randint(-600, 600), randint(-400, 500))
-        artist.setheading(0.0)
-        artist.pendown()
-        artist.pencolor(leaf_color)
-        artist.fillcolor(leaf_color)
-        artist.begin_fill()
-        artist.circle(300, 70)
-        artist.left(110)
-        artist.circle(300, 70)
-        artist.end_fill()
+    if season() == "fall":
+        random_color: int = randint(1, 3)
+        leaf_color: str = ""
+        if random_color == 1:
+            leaf_color += "red"
+        if random_color == 2:
+            leaf_color += "green"
+        if random_color == 3:
+            leaf_color += "yellow"
+        i: int = 0
+        while i < 25:
+            artist.penup()
+            artist.goto(randint(-600, 600), randint(-400, 500))
+            artist.setheading(0.0)
+            artist.pendown()
+            artist.pencolor(leaf_color)
+            artist.fillcolor(leaf_color)
+            artist.begin_fill()
+            artist.circle(15, 70)
+            artist.left(110)
+            artist.circle(15, 70)
+            artist.end_fill()
+            i += 1
 
 
 def time() -> str:
@@ -137,8 +140,6 @@ def sky(artist: Turtle) -> None:
         square(t, -700, -700, 1400)
         artist.end_fill() 
         night_sky(artist)
-    if season() == "fall":
-        leaves(artist)
      
 
 def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
