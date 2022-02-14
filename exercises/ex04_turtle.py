@@ -13,12 +13,34 @@ def main() -> None:
     """The entrypoint of my scene."""
     tracer(0, 0)
     sky(t)
-    random_stars(t)
-    moon(t, 50)
     grass(t)
     house(t)
     update()
     done()
+
+
+def moon(artist: Turtle, radius: float) -> None:
+    artist.penup()
+    artist.goto(randint(-200, 500), randint(0, 200))
+    artist.setheading(0.0)
+    artist.pendown()
+    artist.pencolor("yellow")
+    artist.fillcolor("yellow")
+    artist.begin_fill()
+    artist.circle(radius)
+    artist.end_fill()
+
+
+def sun(artist: Turtle, radius: float) -> None:
+    artist.penup()
+    artist.goto(randint(-200, 500), randint(0, 200))
+    artist.setheading(0.0)
+    artist.pendown()
+    artist.pencolor(randint(190, 255), randint(174, 233), randint(48, 62))
+    artist.fillcolor(randint(190, 255), randint(174, 233), randint(48, 62))
+    artist.begin_fill()
+    artist.circle(radius)
+    artist.end_fill()
 
 
 def draw_star(artist: Turtle, x: int, y: int) -> None:
@@ -39,25 +61,38 @@ def draw_star(artist: Turtle, x: int, y: int) -> None:
     artist.end_fill()
 
 
-def random_stars(artist: Turtle) -> None:
-    """Randomizes stars in the night sky."""
+def night_sky(artist: Turtle) -> None:
+    """Randomizes stars and moon in the night sky."""
     i: int = 0
     while i < 20:
         draw_star(t, randint(-600, 600), randint(-200, 500))
         i += 1
+    moon(artist, 50)
 
 
-def square(artist: Turtle, x: int, y: int, width: int) -> None:
-    """Draws a square with inputed width."""
-    artist.penup()
-    artist.goto(x, y)
-    artist.setheading(0.0)
-    artist.pendown()
+def leaves(artist: Turtle) -> None:
+    random_color: int = randint(1, 3)
+    leaf_color: str = ""
+    if random_color == 1:
+        leaf_color += "red"
+    if random_color == 2:
+        leaf_color += "green"
+    if random_color == 3:
+        leaf_color += "yellow"
     i: int = 0
-    while i < 4:
-        artist.forward(width)
-        artist.left(90)
-        i += 1
+    while i < 20:
+        artist.penup()
+        artist.goto(randint(-600, 600), randint(-400, 500))
+        artist.setheading(0.0)
+        artist.pendown()
+        artist.pencolor(leaf_color)
+        artist.fillcolor(leaf_color)
+        artist.begin_fill()
+        artist.circle(300, 70)
+        artist.left(110)
+        artist.circle(300, 70)
+        artist.end_fill()
+
 
 def time() -> str:
     x: int = randint(1, 2)
@@ -69,50 +104,42 @@ def time() -> str:
 
 def season() -> str:
     x: int = randint(1, 4)
+    season_type: str = ""
     if x == 1:
-        return "winter"
+        season_type += "winter"
     if x == 2:
-        return "spring"
+        season_type += "spring"
     if x == 3:
-        return "summer"
+        season_type += "summer"
     if x == 4:
-        return "fall"
+        season_type += "fall"
+    return season_type
 
 
 def sky(artist: Turtle) -> None:
     """Creates a peaceful sky."""
-    artist.pencolor(5, 4, 40)
-    artist.fillcolor(5, 4, 40)
-    artist.begin_fill()
-    square(t, -700, -700, 1400)
-    artist.end_fill()
-    # if time() == "day":
-    #     if season() == "winter":
-    #         artist.pencolor(5, 4, 40)
-    #         artist.fillcolor(5, 4, 40)
-    #         artist.begin_fill()
-    #         square(t, -700, -700, 1400)
-    #         artist.end_fill()
-    #     if season() == "spring":
-    #         artist.pencolor(5, 4, 40)
-    #         artist.fillcolor(5, 4, 40)
-    #         artist.begin_fill()
-    #         square(t, -700, -700, 1400)
-    #         artist.end_fill()
-    #     if season() == "summer":
-    #         artist.pencolor(5, 4, 40)
-    #         artist.fillcolor(5, 4, 40)
-    #         artist.begin_fill()
-    #         square(t, -700, -700, 1400)
-    #         artist.end_fill()
-    #     if season() == "fall":
-    #         artist.pencolor(5, 4, 40)
-    #         artist.fillcolor(5, 4, 40)
-    #         artist.begin_fill()
-    #         square(t, -700, -700, 1400)
-    #         artist.end_fill() 
-    # else:
-           
+    # artist.pencolor(5, 4, 40)
+    # artist.fillcolor(5, 4, 40)
+    # artist.begin_fill()
+    # square(t, -700, -700, 1400)
+    # artist.end_fill()
+    if time() == "day":
+        artist.pencolor(39, 208, 219)
+        artist.fillcolor(39, 208, 219)
+        artist.begin_fill()
+        square(t, -700, -700, 1400)
+        artist.end_fill() 
+        sun(artist, 50)
+    else:
+        artist.pencolor(5, 4, 40)
+        artist.fillcolor(5, 4, 40)
+        artist.begin_fill()
+        square(t, -700, -700, 1400)
+        artist.end_fill() 
+        night_sky(artist)
+    if season() == "fall":
+        leaves(artist)
+     
 
 def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
     """Draws a rectangle with left bottom corner at (x, y) and inputed width and height."""
@@ -127,6 +154,19 @@ def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
     artist.forward(width)
     artist.left(90)
     artist.forward(height)
+
+
+def square(artist: Turtle, x: int, y: int, width: int) -> None:
+    """Draws a square with inputed width."""
+    artist.penup()
+    artist.goto(x, y)
+    artist.setheading(0.0)
+    artist.pendown()
+    i: int = 0
+    while i < 4:
+        artist.forward(width)
+        artist.left(90)
+        i += 1
 
 
 def grass(artist: Turtle) -> None:
@@ -181,18 +221,6 @@ def house(artist: Turtle) -> None:
         position += 140
         i += 1
 
-
-def moon(artist: Turtle, radius: float) -> None:
-    artist.penup()
-    artist.goto(randint(-200, 500), randint(0, 200))
-    artist.setheading(0.0)
-    artist.pendown()
-    artist.pencolor("yellow")
-    artist.fillcolor("yellow")
-    artist.begin_fill()
-    artist.circle(radius)
-    artist.end_fill()
-   
 
 if __name__ == "__main__":
     main()
