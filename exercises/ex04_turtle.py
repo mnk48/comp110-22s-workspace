@@ -1,6 +1,14 @@
-"""Every time you come home, the landlord has completely renovated."""
+"""This fall has been a weird one; Every time you come home, the landlord has completely renovated.
+
+Attempting 'break up complex functions' in lines 84-90, 138-155, and 196-222.
+Attempting 'try something fun' through randomization of time of day (lines 30-38); house position
+and color (both fill and pen color of house and windows) (lines 196-222); sun, moon, and star position (lines 41-51, 54-64, and 84-90);
+leaf position and color (lines 93-116); bird position (lines 119-135); and watching eye position (lines 225-246).
+"""
+
 
 __author__ = "730389267"
+
 
 from random import randint
 from turtle import Turtle, colormode, done, tracer, update
@@ -16,6 +24,7 @@ def main() -> None:
     sky(t)
     grass(t)
     house(t)
+    eyes(t, randint(100, 500), randint(100, 400))
     eyes(t, randint(100, 500), randint(100, 400))
     update()
     done()
