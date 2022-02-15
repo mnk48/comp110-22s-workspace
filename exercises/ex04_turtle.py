@@ -1,9 +1,9 @@
 """This fall has been a weird one; Every time you come home, the landlord has completely renovated.
 
-Attempting 'break up complex functions' in lines 84-90, 138-155, and 196-222.
-Attempting 'try something fun' through randomization of time of day (lines 30-38); house position
-and color (both fill and pen color of house and windows) (lines 196-222); sun, moon, and star position (lines 41-51, 54-64, and 84-90);
-leaf position and color (lines 93-116); bird position (lines 119-135); and watching eye position (lines 225-246).
+Attempting 'break up complex functions' in lines 87-93, 141-158, and 199-225.
+Attempting 'try something fun' through randomization of time of day (lines 33-41); house position
+and color (both fill and pen color of house and windows) (lines 199-225); sun, moon, and star position (lines 44-54, 57-67, and 87-93);
+leaf position and color (lines 96-119); bird position (lines 122-138); and watching eye position (lines 228-249).
 """
 
 
@@ -42,7 +42,7 @@ def time() -> str:
 
 
 def moon(artist: Turtle, radius: float) -> None:
-    """Generates a full moon at a different position."""
+    """Generates a full moon at a different position each time."""
     artist.penup()
     artist.goto(randint(-200, 500), randint(0, 200))
     artist.setheading(0.0)
@@ -55,7 +55,7 @@ def moon(artist: Turtle, radius: float) -> None:
 
 
 def sun(artist: Turtle, radius: float) -> None:
-    """Generates a beaming sun of different colors at a different position."""
+    """Generates a beaming sun of different colors at a different position each time."""
     artist.penup()
     artist.goto(randint(-200, 500), randint(0, 200))
     artist.setheading(0.0)
@@ -68,7 +68,7 @@ def sun(artist: Turtle, radius: float) -> None:
 
 
 def draw_star(artist: Turtle, x: int, y: int) -> None:
-    """An artist draws a star."""
+    """Draws a yellow star."""
     artist.penup()
     artist.goto(x, y)
     artist.setheading(0.0)
@@ -85,7 +85,7 @@ def draw_star(artist: Turtle, x: int, y: int) -> None:
 
 
 def night_sky(artist: Turtle) -> None:
-    """Randomizes stars and moon in the night sky."""
+    """Randomizes stars and moon in the sky."""
     i: int = 0
     while i < 20:
         draw_star(artist, randint(-600, 600), randint(-200, 500))
@@ -94,8 +94,8 @@ def night_sky(artist: Turtle) -> None:
 
 
 def leaves(artist: Turtle) -> None:
-    """Creates red, green, or yellow leaves during the daytime at random locations."""
-    random_color: int = randint(1, 3)
+    """Creates red, green, or yellow leaves at random locations."""
+    random_color: int = randint(1, 3)  # random_color is being established to determine a random leaf color.
     leaf_color: str = ""
     if random_color == 1:
         leaf_color += "red"
@@ -120,7 +120,7 @@ def leaves(artist: Turtle) -> None:
 
 
 def birds(artist: Turtle) -> None:
-    """Creates random birds during the day."""
+    """Creates random birds in the sky."""
     x: int
     y: int
     i: int = 0
@@ -139,8 +139,8 @@ def birds(artist: Turtle) -> None:
 
 
 def sky(artist: Turtle) -> None:
-    """Creates a peaceful day or night sky."""
-    if time() == "day":
+    """Creates a peaceful day (with sun, leaves, and birds) or night (with moon and stars) sky."""
+    if time() == "day":  # Calls time() to decide what elements to place in the sky, and to decide the color of the sky.
         artist.pencolor(39, 208, 219)
         artist.fillcolor(39, 208, 219)
         artist.begin_fill()
@@ -174,7 +174,7 @@ def rectangle(artist: Turtle, x: int, y: int, height: int, width: int) -> None:
 
 
 def square(artist: Turtle, x: int, y: int, width: int) -> None:
-    """Draws a square with inputed width."""
+    """Draws a square with left bottom corner at (x, y) and with inputed width."""
     artist.penup()
     artist.goto(x, y)
     artist.setheading(0.0)
@@ -197,21 +197,21 @@ def grass(artist: Turtle) -> None:
 
 
 def house(artist: Turtle) -> None:
-    """Builds a different house each time."""
+    """Builds a different house each time with new colors and position."""
     artist.hideturtle()
-    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))  # Randomizes the outline and fill color of the main house.
     artist.fillcolor(randint(0, 255), randint(0, 255), randint(0, 255))
     position: int = randint(-500, 300)
     artist.begin_fill()  # Makes the main house.
     rectangle(artist, position, -150, 280, 250)
     # triangle(artist, position, -150 + height, 250)
     artist.end_fill()
-    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))  # Randomizes the outline and fill color of the door.
     artist.fillcolor(randint(0, 255), randint(0, 255), randint(0, 255))
     artist.begin_fill()  # Makes the door.
     rectangle(artist, position + 100, -150, 100, 50)
     artist.end_fill()
-    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))
+    artist.pencolor(randint(0, 255), randint(0, 255), randint(0, 255))  # Randomizes the outline and fill color of the windows.
     artist.fillcolor(randint(0, 255), randint(0, 255), randint(0, 255))
     artist.begin_fill()  # Makes the top window. 
     rectangle(artist, position + 25, 0, 80, 200)
@@ -226,7 +226,7 @@ def house(artist: Turtle) -> None:
 
 
 def eyes(artist: Turtle, x: int, y: int) -> None:
-    """A pair of eyes protect over the scene."""
+    """A pair of eyes protect over the scene, at random positions each time."""
     i: int = 0
     while i < 2:
         artist.penup()
