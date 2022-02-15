@@ -125,8 +125,8 @@ def birds(artist: Turtle) -> None:
     y: int
     i: int = 0
     while i < 6:
-        x: int = randint(-700, 700)
-        y: int = randint(0, 400)
+        x = randint(-700, 700)
+        y = randint(0, 400)
         artist.penup()
         artist.goto(x, y)
         artist.setheading(0.0)
