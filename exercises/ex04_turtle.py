@@ -6,18 +6,30 @@ from random import randint
 from turtle import Turtle, colormode, done, tracer, update
 colormode(255)
 
-t: Turtle = Turtle()
-
 
 def main() -> None:
     """The entrypoint of my scene."""
+    t: Turtle = Turtle()
+    t.pensize(3)
     tracer(0, 0)
+    time()
     sky(t)
     grass(t)
-    birds(t, 300, 300)
     house(t)
+    eyes(t, randint(100, 500), randint(100, 400))
     update()
     done()
+
+
+def time() -> str:
+    """Decides the time of the scene: day or night."""
+    x: int = randint(1, 2)
+    random_time: str = ""
+    if x == 1:
+        random_time += "day"
+    if x == 2:
+        random_time += "night"
+    return random_time
 
 
 def moon(artist: Turtle, radius: float) -> None:
@@ -48,7 +60,6 @@ def sun(artist: Turtle, radius: float) -> None:
 
 def draw_star(artist: Turtle, x: int, y: int) -> None:
     """An artist draws a star."""
-    artist.hideturtle()
     artist.penup()
     artist.goto(x, y)
     artist.setheading(0.0)
@@ -68,12 +79,13 @@ def night_sky(artist: Turtle) -> None:
     """Randomizes stars and moon in the night sky."""
     i: int = 0
     while i < 20:
-        draw_star(t, randint(-600, 600), randint(-200, 500))
+        draw_star(artist, randint(-600, 600), randint(-200, 500))
         i += 1
     moon(artist, 50)
 
 
 def leaves(artist: Turtle) -> None:
+    """Creates red, green, or yellow leaves during the daytime at random locations."""
     random_color: int = randint(1, 3)
     leaf_color: str = ""
     if random_color == 1:
@@ -98,9 +110,14 @@ def leaves(artist: Turtle) -> None:
         i += 1
 
 
-def birds(artist: Turtle, x: int, y: int) -> None:
+def birds(artist: Turtle) -> None:
+    """Creates random birds during the day."""
+    x: int
+    y: int
     i: int = 0
     while i < 6:
+        x: int = randint(-700, 700)
+        y: int = randint(0, 400)
         artist.penup()
         artist.goto(x, y)
         artist.setheading(0.0)
@@ -108,50 +125,26 @@ def birds(artist: Turtle, x: int, y: int) -> None:
         artist.pencolor("black")
         artist.fillcolor("black")
         artist.circle(-15, 70)
-        artist.circle(-15, 70)
+        artist.circle(15, -70)
         i += 1
 
 
-
-def time() -> str:
-    x: int = randint(1, 2)
-    random_time: str = ""
-    if x == 1:
-        random_time += "day"
-    if x == 2:
-        random_time += "night"
-    return random_time
-
-
-# def season() -> str:
-#     x: int = randint(1, 4)
-#     season_type: str = ""
-#     if x == 1:
-#         season_type += "winter"
-#     if x == 2:
-#         season_type += "spring"
-#     if x == 3:
-#         season_type += "summer"
-#     if x == 4:
-#         season_type += "fall"
-#     return season_type
-
-
 def sky(artist: Turtle) -> None:
-    """Creates a peaceful sky."""
+    """Creates a peaceful day or night sky."""
     if time() == "day":
         artist.pencolor(39, 208, 219)
         artist.fillcolor(39, 208, 219)
         artist.begin_fill()
-        square(t, -700, -700, 1400)
+        square(artist, -700, -700, 1400)
         artist.end_fill() 
         sun(artist, 50)
         leaves(artist)
+        birds(artist)
     else:
         artist.pencolor(5, 4, 40)
         artist.fillcolor(5, 4, 40)
         artist.begin_fill()
-        square(t, -700, -700, 1400)
+        square(artist, -700, -700, 1400)
         artist.end_fill() 
         night_sky(artist)
      
@@ -185,27 +178,13 @@ def square(artist: Turtle, x: int, y: int, width: int) -> None:
 
 
 def grass(artist: Turtle) -> None:
-    """Mows the lawn."""
+    """Grows the grass and mows the lawn."""
     artist.hideturtle()
     artist.pencolor(12, 82, 3)
     artist.fillcolor(12, 82, 3)
     artist.begin_fill()
     rectangle(artist, -700, -700, 550, 1400)
     artist.end_fill()
-
-
-def triangle(artist: Turtle, x: int, y: int, side_length: int) -> None:
-    """Draws a triangle with left corner at (x, y) and with inputed side length."""
-    artist.hideturtle()
-    artist.penup()
-    artist.goto(x, y)
-    artist.setheading(0.0)
-    artist.pendown()
-    i: int = 0
-    while (i < 3):
-        artist.forward(side_length)
-        artist.left(120)
-        i = i + 1
 
 
 def house(artist: Turtle) -> None:
@@ -234,6 +213,30 @@ def house(artist: Turtle) -> None:
         square(artist, position + 30, -120, 50)
         artist.end_fill()
         position += 140
+        i += 1
+
+
+def eyes(artist: Turtle, x: int, y: int) -> None:
+    """A pair of eyes protect over the scene."""
+    i: int = 0
+    while i < 2:
+        artist.penup()
+        artist.goto(x + (i * 20), y)
+        artist.setheading(0.0)
+        artist.pendown()
+        artist.pencolor("black")
+        artist.fillcolor("white")
+        artist.begin_fill()
+        artist.circle(10)
+        artist.end_fill()
+        artist.penup()
+        artist.goto(x + (i * 20) + 3, y + 3)
+        artist.setheading(0.0)
+        artist.pendown()
+        artist.fillcolor("black")
+        artist.begin_fill()
+        artist.circle(2)
+        artist.end_fill()
         i += 1
 
 
