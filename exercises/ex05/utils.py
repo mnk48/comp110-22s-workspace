@@ -21,10 +21,19 @@ def sub(input: list[int], start: int, end: int) -> list[int]:
         return sub_list
     if start < 0:
         start = 0
-    if end > len(input) + 1:
-        end = (len(input) + 3)
+    if end > len(input):
+        end = len(input)
     i: int = 0
-    while i < (end - 1):
+    while i < (end - start):
         sub_list.append(input[start + i])
         i += 1
     return sub_list
+
+
+def concat(first_input: list[int], second_input: list[int]) -> list[int]:
+    concat_list: list[int] = list()
+    for number in first_input:
+        concat_list.append(number)
+    for number in second_input:
+        concat_list.append(number)
+    return concat_list
