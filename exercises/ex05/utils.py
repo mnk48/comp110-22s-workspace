@@ -31,9 +31,14 @@ def sub(input: list[int], start: int, end: int) -> list[int]:
 
 
 def concat(first_input: list[int], second_input: list[int]) -> list[int]:
+    """Creates a list of integers inputed from two seperate lists, in the order of the inputed lists."""
     concat_list: list[int] = list()
-    for number in first_input:
-        concat_list.append(number)
-    for number in second_input:
-        concat_list.append(number)
+    i: int = 0
+    while i < len(first_input):
+        concat_list.append(first_input[i])
+        i += 1
+    j: int = 0
+    while j < len(second_input):
+        concat_list.append(second_input[j])
+        j += 1
     return concat_list
