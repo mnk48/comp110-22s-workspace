@@ -55,5 +55,5 @@ def test_favorite_color_edge_2() -> None:
 
 def test_count_use_1() -> None:
     """Tests a regular use case for the count function."""
-    input = list[str] = ["hello", "cow", "hello", "dog"]
+    input: list[str] = ["hello", "cow", "hello", "dog"]
     assert count(input) == {"hello": 2, "cow": 1, "dog": 1}
