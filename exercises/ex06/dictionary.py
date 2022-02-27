@@ -31,6 +31,7 @@ def favorite_color(dictionary: dict[str, str]) -> str:
 
 
 def count(input: list[str]) -> dict[str, int]:
+    """Given a list of strings, returns a dictionary with the strings as keys and the values as the number of times the strings appeared in the list."""
     tally: dict[str, int] = dict()
     i: int = 0
     while i < len(input):
