@@ -40,4 +40,5 @@ def count(input: list[str]) -> dict[str, int]:
             tally[input[i]] += 1
         else:
             tally[input[i]] = 1
+        i += 1
     return tally
