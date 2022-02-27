@@ -23,8 +23,6 @@ def favorite_color(dictionary: dict[str, str]) -> str:
         score[dictionary[name]] = 0
     for name in dictionary:
         score[dictionary[name]] += 1
-    # for color in score:
-    #     print(f"Key: {color} -> Value: {score[color]}")
     for color in score:
         if score[color] > counter:
             winner = color

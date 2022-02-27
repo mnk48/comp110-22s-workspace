@@ -2,8 +2,7 @@
 
 __author__ = "730389267"
 
-from exercises.ex06.dictionary import invert, favorite_color
-from exercises.ex06.dictionary import count
+from exercises.ex06.dictionary import invert, favorite_color, count
 import pytest
 
 
@@ -58,3 +57,15 @@ def test_count_use_1() -> None:
     """Tests a regular use case for the count function."""
     xs: list[str] = ["hello", "cow", "hello", "dog"]
     assert count(xs) == {"hello": 2, "cow": 1, "dog": 1}
+
+
+def test_count_use_2() -> None:
+    """Tests another regular use case for the count function."""
+    xs: list[str] = ["Kris", "Kris", "Kris", "Jordan"]
+    assert count(xs) == {"Kris": 3, "Jordan": 1}
+
+
+def test_count_edge_1() -> None:
+    """Tests an edge case for the count function."""
+    xs: list[str] = []
+    assert count(xs) == {}
