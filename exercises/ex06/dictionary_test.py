@@ -2,7 +2,7 @@
 
 __author__ = "730389267"
 
-from exercises.ex06.dictionary import invert
+from exercises.ex06.dictionary import invert, favorite_color, count
 import pytest
 
 
@@ -12,10 +12,48 @@ def test_invert_use_1() -> None:
     assert invert(input) == {'z': 'a', 'y': 'b', 'x': 'c'}
 
 
-# def test_invert_edge() -> None:
-#     """Tests an edge case for the invert function."""
+def test_invert_use_2() -> None:
+    """Tests a second regular use case for the invert function."""
+    input = {'hello': 'world'}
+    assert invert(input) == {'world': 'hello'}
+
+
+def test_invert_edge() -> None:
+    """Tests an edge use case for the invert function."""
+    input = {}
+    assert invert(input) == {}
 
 
 with pytest.raises(KeyError):
     my_dictionary = {'kris': 'jordan', 'michael': 'jordan'}
     invert(my_dictionary)
+
+
+def test_favorite_color_use_1() -> None:
+    """Tests a regular use case for the favorite color function."""
+    input = {"Marc": "yellow", "Ezri": "blue", "Kris": "blue"}
+    assert favorite_color(input) == "blue"
+
+
+def test_favorite_color_use_2() -> None:
+    """Tests a second regular use case for the favorite color function."""
+    input = {"Kacey": "blue", "Malak": "green", "John": "green", "Kyra": "green", "Samia": "yellow"}
+    assert favorite_color(input) == "green"
+
+
+def test_favorite_color_edge_1() -> None:
+    """Tests an edge case for the favorite color function when two colors are tied for favorite."""
+    input = {"Malak": "blue", "John": "red", "Lorelai": "blue", "Lila": "red"}
+    assert favorite_color(input) == "blue"
+
+
+def test_favorite_color_edge_2() -> None:
+    """Tests another edge case for the favorite color function when two colors are tied for favorite."""
+    input = {"Malak": "green", "Will": "blue", "Lila": "purple", "John": "green", "Kacey": "purple", "Addison": "blue"}
+    assert favorite_color(input) == "green"
+
+
+def test_count_use_1() -> None:
+    """Tests a regular use case for the count function."""
+    input = list[str] = ["hello", "cow", "hello", "dog"]
+    assert count(input) == {"hello": 2, "cow": 1, "dog": 1}
