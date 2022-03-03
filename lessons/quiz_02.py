@@ -31,9 +31,10 @@ def vowels_and_threes(input: str) -> str:
 def average_grades(input: dict[str, list[int]]) -> dict[str, float]:
     """Calculates an average grade for each student."""
     gradebook: dict[str, float] = {}
-    total: float = 0
     for name in input:
+        total: float = 0
         for grade in input[name]:
             total += grade
         total = total / len(input[name])
-    
+        gradebook[name] = total
+    return gradebook
