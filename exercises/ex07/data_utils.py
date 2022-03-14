@@ -40,6 +40,8 @@ def head(column_table: dict[str, list[str]], N: int) -> dict[str, list[str]]:
     result: dict[str, list[str]] = {}
     for column in column_table:
         column_values: list[str] = []
+        # if N >= len(column_table):
+        #     N = len(column_table) + 1
         i: int = 0
         while i < N:
             column_values.append(column_table[column][i])
