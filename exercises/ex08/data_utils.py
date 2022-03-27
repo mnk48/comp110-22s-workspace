@@ -80,3 +80,6 @@ def count(input: list[str]) -> dict[str, int]:
         else:
             result[value] = 1
     return result
+
+
+def threshold(input: )
