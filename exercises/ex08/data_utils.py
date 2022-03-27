@@ -4,6 +4,7 @@ __author__ = "730389267"
 
 
 from csv import DictReader
+from typing import Union
 
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
@@ -82,4 +83,37 @@ def count(input: list[str]) -> dict[str, int]:
     return result
 
 
-def threshold(input: )
+# def threshold(input: list[dict[str, int]], key: str, value: int) -> list[dict[str, int]]:
+#     """Given a row-oriented table, a specified key, and a threshold value, creates a new table containing only those rows whose values meet the threshold integer."""
+#     result: list[dict[str, int]] = []
+#     for user in input:
+#         if user[key] >= value:
+#             result.append(user)
+#     return result
+
+def threshold(input: dict[str, list[int]], value: int) -> dict[str, list[int]]:
+    """"""
+    result: dict[str, list[int]] = {}
+    for column in input:
+        i: int = 0
+        while i < len(input)
+        # for number in column:
+        #     if number >= value:
+        #         result[column] = value
+    return result
+
+
+
+def make_int(input: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Turns string values into integer values in a column-oriented table."""
+    for user in input:
+        for value in user:
+            int(value)
+    return input
+
+
+
+# def make_int(input: list[dict[str, str]], key: str) -> list[dict[str, int]:
+#     """Turns string values in a specific row into integers."""
+#     for user in input:
+#         int(user[key])
