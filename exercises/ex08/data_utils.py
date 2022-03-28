@@ -85,11 +85,18 @@ def count(input: list[str]) -> dict[str, int]:
 def count_ints(input: list[int]) -> dict[int, int]:
     """Given an inputed list of integers, returns a dictionary which stores the frequency of each value within the list."""
     result: dict[int, int] = {}
-    for value in input:
-        if value in result:
-            result[value] += 1
+    i: int = 0 
+    while i < len(input):
+        if input[i] in result:
+            result[input[i]] += 1
         else:
-            result[value] = 1
+            result[input[i]] = 1
+        i += 1
+    # for value in input:
+    #     if value in result:
+    #         result[str(value)] += 1
+    #     else:
+    #         result[str(value)] = 1
     return result
 
 
@@ -105,6 +112,13 @@ def threshold(input: dict[str, list[int]], value: int, name: list[str]) -> dict[
                     j.append(input[key][i])
                 i += 1
             result[key] = j
+        else:
+            x: list[int] = []
+            i: int = 0
+            while i < len(input[key]):
+                x.append(input[key][i])
+                i += 1
+            result[key] = x
     return result
 
 
