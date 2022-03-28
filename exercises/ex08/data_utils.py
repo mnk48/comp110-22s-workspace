@@ -40,8 +40,6 @@ def head(column_table: dict[str, list[str]], N: int) -> dict[str, list[str]]:
     result: dict[str, list[str]] = {}
     for column in column_table:
         column_values: list[str] = []
-        # if N >= len(column_table):
-        #     N = len(column_table) + 1
         i: int = 0
         while i < N:
             column_values.append(column_table[column][i])
@@ -92,16 +90,11 @@ def count_ints(input: list[int]) -> dict[int, int]:
         else:
             result[input[i]] = 1
         i += 1
-    # for value in input:
-    #     if value in result:
-    #         result[str(value)] += 1
-    #     else:
-    #         result[str(value)] = 1
     return result
 
 
 def threshold(input: dict[str, list[int]], value: int, name: list[str]) -> dict[str, list[int]]:
-    """Given a column-oriented table, creates a new table with values that are equal to or above a certain threshold integer value."""
+    """Given a column-oriented table, a threshold value, and a list of column names, creates a new table with values that are equal to or above the threshold value in the columns specified."""
     result: dict[str, list[int]] = {}
     for key in input:
         if key in name:
