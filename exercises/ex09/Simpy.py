@@ -77,5 +77,41 @@ class Simpy:
                 i += 1
         return result
 
-    def __eq__(self, )
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Given a Simpy and either a float or Simpy, returns a list of bools 
+        describing whether the index at the simpy equals the float or the index at the rhs Simpy.
+        """
+        result: list[bool] = []
+        if isinstance(rhs, Simpy):
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] == rhs.values[i])
+                i += 1
+        else:
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] == rhs)
+                i += 1
+        return result    
     
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
+        """Given a float or Simpy, results a list of bools describing whether the self at the index
+        is greater than the float or the Simpy at the index.
+        """
+        result: list[bool] = []
+        if isinstance(rhs, Simpy):
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] > rhs.values[i])
+                i += 1
+        else:
+            i: int = 0
+            while i < len(self.values):
+                result.append(self.values[i] > rhs)
+                i += 1
+        return result
+    
+    def __getitem__(self, rhs: int) -> float:
+        """"""
+        return self.values[rhs]
+        
