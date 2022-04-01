@@ -111,7 +111,17 @@ class Simpy:
                 i += 1
         return result
     
-    def __getitem__(self, rhs: int) -> float:
-        """"""
-        return self.values[rhs]
-        
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Given an integer, returns the Simpy value at that index. Given a mask,
+        returns the values within the Simpy object which satisfy that mask.
+        """
+        if isinstance(rhs, int):
+            return self.values[rhs]
+        else:
+            result: Simpy = Simpy([])
+            i: int = 0
+            while i < len(self.values):
+                if rhs[i] is True:
+                    result.values.append(self.values[i])
+                i += 1
+            return result
