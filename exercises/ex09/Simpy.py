@@ -10,13 +10,13 @@ __author__ = "730389267"
 class Simpy:
     values: list[float]
 
-    def __init__(self, values):
+    def __init__(self, values: list[float]):
         """Initializes Simpy's values to the inputed values list."""
         self.values = values
     
     def __str__(self) -> str:
         """Returns a string representation of a Simpy object."""
-        return f"Simpy({str(self.values)}"
+        return f"Simpy({(self.values)})"
     
     def fill(self, input: float, number: int) -> None:
         """Given a inputed float and length, fills a Simpy's values with that float and given length."""
@@ -27,9 +27,7 @@ class Simpy:
             i += 1
     
     def arange(self, start: float, stop: float, step: float = 1.0) -> None:
-        """Given a start, stop, and step float, mutates a Simpy object to produce a list of floats starting with the start index,
-        ending with the number before the stop index, and increasing or decreasing by the step index.
-        """
+        """Given a start, stop, and step float, mutates a Simpy object to produce a list of floats starting with the start index, ending with the number before the stop index, and increasing or decreasing by the step index."""
         self.values = []
         i: int = 0
         while (start + (i * step)) != stop:
@@ -42,9 +40,7 @@ class Simpy:
         return result
     
     def __add__(self, rhs: Union[float, Simpy]) -> Simpy:
-        """Given a float or a Simpy object, adds the float values to each self index
-        or the corresponding Simpy indices together to return a new Simpy object.
-        """
+        """Given a float or a Simpy object, adds the float values to each self index or the corresponding Simpy indices together to return a new Simpy object."""
         result: Simpy = Simpy([])
         if isinstance(rhs, Simpy):
             assert len(rhs.values) == len(self.values)
@@ -60,9 +56,7 @@ class Simpy:
         return result
     
     def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
-        """Given a float or a Simpy, raises the values of the Simpy object to that
-        float or corresponding Simpy index.
-        """
+        """Given a float or a Simpy, raises the values of the Simpy object to that float or corresponding Simpy index."""
         result: Simpy = Simpy([])
         if isinstance(rhs, Simpy):
             assert len(rhs.values) == len(self.values)
@@ -78,9 +72,7 @@ class Simpy:
         return result
 
     def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
-        """Given a Simpy and either a float or Simpy, returns a list of bools 
-        describing whether the index at the simpy equals the float or the index at the rhs Simpy.
-        """
+        """Given a Simpy and either a float or Simpy, returns a list of bools describing whether the index at the simpy equals the float or the index at the rhs Simpy."""
         result: list[bool] = []
         if isinstance(rhs, Simpy):
             i: int = 0
@@ -95,9 +87,7 @@ class Simpy:
         return result    
     
     def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
-        """Given a float or Simpy, results a list of bools describing whether the self at the index
-        is greater than the float or the Simpy at the index.
-        """
+        """Given a float or Simpy, results a list of bools describing whether the self at the index is greater than the float or the Simpy at the index."""
         result: list[bool] = []
         if isinstance(rhs, Simpy):
             i: int = 0
@@ -112,9 +102,7 @@ class Simpy:
         return result
     
     def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
-        """Given an integer, returns the Simpy value at that index. Given a mask,
-        returns the values within the Simpy object which satisfy that mask.
-        """
+        """Given an integer, returns the Simpy value at that index. Given a mask, returns the values within the Simpy object which satisfy that mask."""
         if isinstance(rhs, int):
             return self.values[rhs]
         else:
