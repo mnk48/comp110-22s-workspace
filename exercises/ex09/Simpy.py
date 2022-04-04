@@ -8,6 +8,7 @@ __author__ = "730389267"
 
 
 class Simpy:
+    """A utility class similar to NumPy, which allows several manipulations to be performed on a list of floats (such as filling and addition)."""
     values: list[float]
 
     def __init__(self, values: list[float]):
