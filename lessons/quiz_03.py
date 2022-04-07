@@ -46,23 +46,23 @@ class ChristmasTreeFarm:
                 i += 1
         return tree_count
 
-    def __add__(self, rhs: ChristmasTreeFarm) -> ChristmasTreeFarm:
-        """Overload addition to create new ChristmasTreFarm."""
-        new_farm: ChristmasTreeFarm 
-        size: int = len(self.plots) + len(rhs.plots)
-        plantings: int = 0
-        i: int = 0
-        while i < len(self.plots):
-            if self.plots[i] != 0:
-                plantings += 1
-            i += 1
-        i: int = 0
-        while i < len(rhs.plots):
-            if rhs.plots[i] != 0:
-                plantings += 1
-            i += 1
-        new_farm: ChristmasTreeFarm = ChristmasTreeFarm(size, plantings)
-        return new_farm
+    # def __add__(self, rhs: ChristmasTreeFarm) -> ChristmasTreeFarm:
+    #     """Overload addition to create new ChristmasTreFarm."""
+    #     new_farm: ChristmasTreeFarm 
+    #     size: int = len(self.plots) + len(rhs.plots)
+    #     plantings: int = 0
+    #     i: int = 0
+    #     while i < len(self.plots):
+    #         if self.plots[i] != 0:
+    #             plantings += 1
+    #         i += 1
+    #     i: int = 0
+    #     while i < len(rhs.plots):
+    #         if rhs.plots[i] != 0:
+    #             plantings += 1
+    #         i += 1
+    #     new_farm: ChristmasTreeFarm = ChristmasTreeFarm(size, plantings)
+    #     return new_farm
 
 
 class Course:
