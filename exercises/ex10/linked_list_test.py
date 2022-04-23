@@ -1,7 +1,7 @@
 """Tests for linked list utils."""
 
 import pytest
-from exercises.ex10.linked_list import Node, last, value_at, max
+from exercises.ex10.linked_list import Node, last, value_at, max, linkify
 
 __author__ = "730389267"
 
@@ -41,6 +41,25 @@ def test_max_at_empty() -> None:
     with pytest.raises(ValueError):
         max(None)
 
+
 def test_max_non_empty() -> None:
     linked_list = Node(10, Node(20, Node(30, None)))
     assert max(linked_list) == 30
+
+
+def test_linkify_at_empty() -> None:
+    """linkify will return None upon an empty list."""
+    items: list[int] = []
+    assert linkify(items) is None
+
+
+def test_linkify_non_empty() -> None:
+    """linkify will return a Node composed of the inputed list items in order."""
+    items: list[int] = [1, 2, 3]
+    assert linkify(items).__str__() == "1 -> 2 -> 3 -> None"
+
+
+def test_linkify_non_empty_1() -> None:
+    """linkify will return a Node composed of the inputed list items in order."""
+    items: list[int] = [4, 1, 6, 7]
+    assert linkify(items).__str__() == "4 -> 1 -> 6 -> 7 -> None"
