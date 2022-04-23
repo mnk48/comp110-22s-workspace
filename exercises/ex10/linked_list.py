@@ -98,3 +98,14 @@ def linkify(items: list[int]) -> Optional[Node]:
             return output
         return output
     
+
+def scale(head: Optional[Node], factor: int) -> Optional[Node]:
+    """Creates a new linked list from a previous linked list by scaling each Node data by a factor."""
+    if head is None:
+        return None
+    else:
+        output: Node = Node(head.data * factor, None)
+        if head.next is None:
+            return output
+        else:
+            output.next = scale(head.next, factor)

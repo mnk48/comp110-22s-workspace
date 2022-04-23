@@ -1,7 +1,7 @@
 """Tests for linked list utils."""
 
 import pytest
-from exercises.ex10.linked_list import Node, last, value_at, max, linkify
+from exercises.ex10.linked_list import Node, last, value_at, max, linkify, scale
 
 __author__ = "730389267"
 
@@ -63,3 +63,15 @@ def test_linkify_non_empty_1() -> None:
     """linkify will return a Node composed of the inputed list items in order."""
     items: list[int] = [4, 1, 6, 7]
     assert linkify(items).__str__() == "4 -> 1 -> 6 -> 7 -> None"
+
+
+def test_scale_empty() -> None:
+    """scale will return an empty linked list upon the input of an empty linked list."""
+    linked_list: None = None
+    assert scale(linked_list, 5) is None 
+
+
+def test_scale_non_empty() -> None:
+    """scale will return a new linked list by returning a new linked list of the scaled data of the inputed linked list."""
+    linked_list: Node = Node(1, Node(2, Node(3, None)))
+    assert scale(linked_list, 2).__str__() == "2 -> 3 -> 6 -> None"
