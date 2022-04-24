@@ -43,7 +43,20 @@ def test_max_at_empty() -> None:
 
 
 def test_max_non_empty() -> None:
+    """max returns the highest value in a linked list."""
     linked_list = Node(10, Node(20, Node(30, None)))
+    assert max(linked_list) == 30
+
+
+def test_max_non_empty_non_ordered() -> None:
+    """max should return the highest value in a linked list where the numbers are not necessarily in order."""
+    linked_list = Node(10, Node(30, Node(20, None)))
+    assert max(linked_list) == 30
+
+
+def test_max_non_empty_non_ordered_2() -> None:
+    """max should return the highest value in a linked list where the numbers are not necessarily in order."""
+    linked_list = Node(30, Node(20, Node(10, None)))
     assert max(linked_list) == 30
 
 
@@ -72,6 +85,12 @@ def test_scale_empty() -> None:
 
 
 def test_scale_non_empty() -> None:
-    """scale will return a new linked list by returning a new linked list of the scaled data of the inputed linked list."""
+    """scale will return a new linked list of the inputed linked list scaled by a factor."""
     linked_list: Node = Node(1, Node(2, Node(3, None)))
-    assert scale(linked_list, 2).__str__() == "2 -> 3 -> 6 -> None"
+    assert scale(linked_list, 2).__str__() == "2 -> 4 -> 6 -> None"
+
+
+def test_scale_non_empty_1() -> None:
+    """scale will return a new linked list of the inputed linked list scaled by a factor."""
+    linked_list: Node = Node(1, None)
+    assert scale(linked_list, 3).__str__() == "3 -> None"

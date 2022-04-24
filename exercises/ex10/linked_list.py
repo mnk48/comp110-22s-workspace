@@ -62,27 +62,21 @@ def max(head: Optional[Node]) -> int:
     if head is None:
         raise ValueError("Cannot call max with None.")
     else:
-        if head.next is None:
+        next: Optional[Node] = head.next
+        if next is None:
             return head.data
         else:
-            i: int = head.data
-            next: Node = head.next
-            if next.data > i:
-                i = next.data
-            max(next)
-            return i
-
-
-    # else:
-    #     i: int = head.data
-    #     if head.next is Node:
-    #         next: Node = head.next
-    #         if next.data > head.data:
-    #             i = next.data
-    #         max(next)
-    #     else:
-    #         return i
-
+            if next.next is None:
+                if head.data < next.data:
+                    return next.data
+                else:
+                    return head.data
+            else: 
+                maximum: int = head.data
+                if maximum < next.data:
+                    maximum = max(next)
+                return maximum
+    
 
 def linkify(items: list[int]) -> Optional[Node]:
     """Creates a linked-list from a list of integers."""
@@ -109,3 +103,4 @@ def scale(head: Optional[Node], factor: int) -> Optional[Node]:
             return output
         else:
             output.next = scale(head.next, factor)
+            return output
