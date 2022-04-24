@@ -19,7 +19,7 @@ def test_last_non_empty() -> None:
 
 
 def test_value_at_empty() -> None:
-    """value_at cannot work on an empty linked list."""
+    """Value_at cannot work on an empty linked list."""
     with pytest.raises(IndexError):
         value_at(None, 3)
 
@@ -37,60 +37,60 @@ def test_value_at_non_empty_above_0() -> None:
 
 
 def test_max_at_empty() -> None:
-    """max cannot work on am empty linked list."""
+    """Max cannot work on am empty linked list."""
     with pytest.raises(ValueError):
         max(None)
 
 
 def test_max_non_empty() -> None:
-    """max returns the highest value in a linked list."""
+    """Max returns the highest value in a linked list."""
     linked_list = Node(10, Node(20, Node(30, None)))
     assert max(linked_list) == 30
 
 
 def test_max_non_empty_non_ordered() -> None:
-    """max should return the highest value in a linked list where the numbers are not necessarily in order."""
+    """Max should return the highest value in a linked list where the numbers are not necessarily in order."""
     linked_list = Node(10, Node(30, Node(20, None)))
     assert max(linked_list) == 30
 
 
 def test_max_non_empty_non_ordered_2() -> None:
-    """max should return the highest value in a linked list where the numbers are not necessarily in order."""
+    """Max should return the highest value in a linked list where the numbers are not necessarily in order."""
     linked_list = Node(30, Node(20, Node(10, None)))
     assert max(linked_list) == 30
 
 
 def test_linkify_at_empty() -> None:
-    """linkify will return None upon an empty list."""
+    """Linkify will return None upon an empty list."""
     items: list[int] = []
     assert linkify(items) is None
 
 
 def test_linkify_non_empty() -> None:
-    """linkify will return a Node composed of the inputed list items in order."""
+    """Linkify will return a Node composed of the inputed list items in order."""
     items: list[int] = [1, 2, 3]
     assert linkify(items).__str__() == "1 -> 2 -> 3 -> None"
 
 
 def test_linkify_non_empty_1() -> None:
-    """linkify will return a Node composed of the inputed list items in order."""
+    """Linkify will return a Node composed of the inputed list items in order."""
     items: list[int] = [4, 1, 6, 7]
     assert linkify(items).__str__() == "4 -> 1 -> 6 -> 7 -> None"
 
 
 def test_scale_empty() -> None:
-    """scale will return an empty linked list upon the input of an empty linked list."""
+    """Scale will return an empty linked list upon the input of an empty linked list."""
     linked_list: None = None
     assert scale(linked_list, 5) is None 
 
 
 def test_scale_non_empty() -> None:
-    """scale will return a new linked list of the inputed linked list scaled by a factor."""
+    """Scale will return a new linked list of the inputed linked list scaled by a factor."""
     linked_list: Node = Node(1, Node(2, Node(3, None)))
     assert scale(linked_list, 2).__str__() == "2 -> 4 -> 6 -> None"
 
 
 def test_scale_non_empty_1() -> None:
-    """scale will return a new linked list of the inputed linked list scaled by a factor."""
+    """Scale will return a new linked list of the inputed linked list scaled by a factor."""
     linked_list: Node = Node(1, None)
     assert scale(linked_list, 3).__str__() == "3 -> None"
